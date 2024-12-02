@@ -33,6 +33,8 @@ def get_input():
     input_data['feature_8'] = st.number_input('Feature 8', min_value=0, max_value=100, value=50)
     input_data['feature_9'] = st.number_input('Feature 9', min_value=0, max_value=100, value=50)
     input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=100, value=50)
+    input_data['feature_11'] = st.number_input('Feature 10', min_value=0, max_value=100, value=50)
+
     
     return input_data
 
