@@ -14,7 +14,7 @@ import joblib
 # joblib.dump(model, 'svm_model.pkl')
 
 # Load the model
-svm_model = joblib.load('"C:\Users\monis\new\Fake-social-Media-Profile-Detection\svm_model.pkl"')
+svm_model = joblib.load('C:\Users\monis\new\Fake-social-Media-Profile-Detection\svm_model.pkl')
 
 # Title of the web app
 st.title('Fake Profile Detection')
