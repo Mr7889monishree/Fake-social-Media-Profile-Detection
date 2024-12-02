@@ -23,17 +23,17 @@ st.title('Fake Profile Detection')
 def get_input():
     input_data = {}
     
-    input_data['feature_1'] = st.number_input('Feature 1', min_value=0, max_value=100, value=50)
-    input_data['feature_2'] = st.number_input('Feature 2', min_value=0, max_value=100, value=50)
-    input_data['feature_3'] = st.number_input('Feature 3', min_value=0, max_value=100, value=50)
-    input_data['feature_4'] = st.number_input('Feature 4', min_value=0, max_value=100, value=50)
-    input_data['feature_5'] = st.number_input('Feature 5', min_value=0, max_value=100, value=50)
-    input_data['feature_6'] = st.number_input('Feature 6', min_value=0, max_value=100, value=50)
-    input_data['feature_7'] = st.number_input('Feature 7', min_value=0, max_value=100, value=50)
-    input_data['feature_8'] = st.number_input('Feature 8', min_value=0, max_value=100, value=50)
-    input_data['feature_9'] = st.number_input('Feature 9', min_value=0, max_value=100, value=50)
-    input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=100, value=50)
-    input_data['feature_11'] = st.number_input('Feature 11', min_value=0, max_value=100, value=50)
+    input_data['feature_1'] = st.number_input('Feature 1', min_value=0, max_value=500, value=50)
+    input_data['feature_2'] = st.number_input('Feature 2', min_value=0, max_value=500, value=50)
+    input_data['feature_3'] = st.number_input('Feature 3', min_value=0, max_value=500, value=50)
+    input_data['feature_4'] = st.number_input('Feature 4', min_value=0, max_value=500, value=50)
+    input_data['feature_5'] = st.number_input('Feature 5', min_value=0, max_value=500, value=50)
+    input_data['feature_6'] = st.number_input('Feature 6', min_value=0, max_value=500, value=50)
+    input_data['feature_7'] = st.number_input('Feature 7', min_value=0, max_value=500, value=50)
+    input_data['feature_8'] = st.number_input('Feature 8', min_value=0, max_value=500, value=50)
+    input_data['feature_9'] = st.number_input('Feature 9', min_value=0, max_value=500, value=50)
+    input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=500, value=50)
+    input_data['feature_11'] = st.number_input('Feature 11', min_value=0, max_value=500, value=50)
 
     
     return input_data
