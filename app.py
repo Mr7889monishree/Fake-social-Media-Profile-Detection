@@ -32,7 +32,7 @@ def get_input():
     input_data['feature_7'] = st.number_input('Feature 7', min_value=0, max_value=1000, value=50)
     input_data['feature_8'] = st.number_input('Feature 8', min_value=0, max_value=1000, value=50)
     input_data['feature_9'] = st.number_input('Feature 9', min_value=0, max_value=1000, value=50)
-    input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=1000000, value=50)
+    input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=100000000, value=50)
     input_data['feature_11'] = st.number_input('Feature 11', min_value=0, max_value=1000, value=50)
 
     
