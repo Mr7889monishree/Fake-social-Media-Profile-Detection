@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import os
+import tensorflow as tf  # Added import for TensorFlow/Keras compatibility
 
 def load_model(model_path):
     """Load a pre-trained model from a given path."""
@@ -10,6 +11,9 @@ def load_model(model_path):
         return None
     try:
         return joblib.load(model_path)
+    except ImportError as e:
+        st.error(f"Required library not found: {e}. Ensure TensorFlow/Keras is installed.")
+        return None
     except Exception as e:
         st.error(f"Error loading model: {e}")
         return None
@@ -32,7 +36,7 @@ selection = st.sidebar.radio("Go to:", menu)
 
 if selection == "Home":
     st.title("Fake Social Media Profile Detection")
-    st.image("Images/cyber.webp", caption="Identify fake profiles with advanced algorithms.")
+    st.image("https://via.placeholder.com/800x400.png?text=Social+Media+Detection", caption="Identify fake profiles with advanced algorithms.")
     st.write("This application helps detect fake social media profiles using machine learning algorithms. Choose an algorithm from the sidebar to start.")
 
 elif selection == "Algorithms":
