@@ -2,7 +2,6 @@ import streamlit as st
 import joblib
 import numpy as np
 import os
-import tensorflow as tf  # Added TensorFlow for Keras compatibility
 
 def load_model(model_path):
     """Load a pre-trained model from a given path."""
@@ -57,7 +56,7 @@ elif selection == "Algorithms":
         "Logistic Regression": "models/log_reg_model.pkl",
         "KNN": "models/knn_model.pkl",
         "Decision Tree": "models/decision_tree_model.pkl",
-        "Neural Network": "models/neural_network_model.h5"  # Update with .h5 if using a Keras model
+        "Neural Network": "models/neural_network_model.pkl"  # Update with .h5 if using a Keras model
     }
 
     model = load_model(model_paths.get(algo_choice))
