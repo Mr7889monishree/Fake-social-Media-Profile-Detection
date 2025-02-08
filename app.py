@@ -86,7 +86,7 @@ elif selection == "Algorithms":
     # Neural Network Algorithm
     elif algo_choice == "Neural Network":
         st.header("Neural Network")
-        model = load_model("models/neural_network_model.pkl")
+        model = load_model("models/neural_model.pkl")
         
         # Input features
         features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
