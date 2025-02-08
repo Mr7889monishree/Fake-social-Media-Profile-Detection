@@ -24,7 +24,7 @@ selection = st.sidebar.radio("Go to:", menu)
 
 if selection == "Home":
     st.title("Fake Social Media Profile Detection")
-    st.image("https://via.placeholder.com/800x400.png?text=Social+Media+Detection", caption="Identify fake profiles with advanced algorithms.")
+    st.image("Images/cyber.webp", caption="Identify fake profiles with advanced algorithms.")
     st.write("This application helps detect fake social media profiles using machine learning algorithms. Choose an algorithm from the sidebar to start.")
 
 elif selection == "Algorithms":
