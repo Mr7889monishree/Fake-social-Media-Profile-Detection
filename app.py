@@ -36,7 +36,7 @@ if selection == "Home":
     st.write("This application helps detect fake social media profiles using machine learning algorithms. Choose an algorithm from the sidebar to start.")
 
 elif selection == "Algorithms":
-    algo_menu = ["SVM", "Logistic Regression", "KNN", "Decision Tree", "Neural Network"]
+    algo_menu = ["SVM", "Logistic Regression", "KNN", "Decision Tree"]
     algo_choice = st.sidebar.selectbox("Choose Algorithm:", algo_menu)
 
     # Dynamic Input for Algorithms
@@ -47,7 +47,6 @@ elif selection == "Algorithms":
         "Logistic Regression": "models/log_reg_model.pkl",
         "KNN": "models/knn_model.pkl",
         "Decision Tree": "models/decision_tree_model.pkl",
-        "Neural Network": "models/neural_network_model.pkl"
     }
 
     model = load_model(model_paths.get(algo_choice))
