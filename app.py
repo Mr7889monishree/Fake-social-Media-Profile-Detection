@@ -39,6 +39,15 @@ elif selection == "Algorithms":
         # Input features
         feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         # Add more features as needed
 
         if st.button("Predict"):
@@ -49,11 +58,20 @@ elif selection == "Algorithms":
     # Logistic Regression Algorithm
     elif algo_choice == "Logistic Regression":
         st.header("Logistic Regression")
-        model = load_model("models/logistic_model.pkl")
+        model = load_model("models/log_reg__model.pkl")
         
         # Input features
         feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         # Add more features as needed
 
         if st.button("Predict"):
@@ -69,6 +87,15 @@ elif selection == "Algorithms":
         # Input features
         feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         # Add more features as needed
 
         if st.button("Predict"):
@@ -84,6 +111,15 @@ elif selection == "Algorithms":
         # Input features
         feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         # Add more features as needed
 
         if st.button("Predict"):
@@ -99,6 +135,15 @@ elif selection == "Algorithms":
         # Input features
         feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
         # Add more features as needed
 
         if st.button("Predict"):
