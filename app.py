@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import numpy as np
 import os
-import tensorflow as tf  # Added import for TensorFlow/Keras compatibility
+import tensorflow as tf  # Added TensorFlow for Keras compatibility
 
 def load_model(model_path):
     """Load a pre-trained model from a given path."""
@@ -10,6 +10,9 @@ def load_model(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
     try:
+        # If it's a Keras model, use tf.keras.models.load_model
+        if model_path.endswith(".h5"):
+            return tf.keras.models.load_model(model_path)
         return joblib.load(model_path)
     except ImportError as e:
         st.error(f"Required library not found: {e}. Ensure TensorFlow/Keras is installed.")
@@ -21,7 +24,10 @@ def load_model(model_path):
 def predict(model, features):
     """Make predictions using the loaded model."""
     try:
-        return model.predict([features])[0]
+        features = np.array(features).reshape(1, -1)  # Ensure features are in the right format
+        if isinstance(model, tf.keras.Model):
+            return model.predict(features).argmax(axis=1)[0]  # Neural network output
+        return model.predict(features)[0]  # Traditional ML models
     except Exception as e:
         st.error(f"Prediction error: {e}")
         return None
@@ -36,7 +42,7 @@ selection = st.sidebar.radio("Go to:", menu)
 
 if selection == "Home":
     st.title("Fake Social Media Profile Detection")
-    st.image("https://via.placeholder.com/800x400.png?text=Social+Media+Detection", caption="Identify fake profiles with advanced algorithms.")
+    st.image("Images/cyber.webp", caption="Identify fake profiles with advanced algorithms.")
     st.write("This application helps detect fake social media profiles using machine learning algorithms. Choose an algorithm from the sidebar to start.")
 
 elif selection == "Algorithms":
@@ -51,7 +57,7 @@ elif selection == "Algorithms":
         "Logistic Regression": "models/log_reg_model.pkl",
         "KNN": "models/knn_model.pkl",
         "Decision Tree": "models/decision_tree_model.pkl",
-        "Neural Network": "models/neural_network_model.pkl"
+        "Neural Network": "models/neural_network_model.h5"  # Update with .h5 if using a Keras model
     }
 
     model = load_model(model_paths.get(algo_choice))
