@@ -53,7 +53,7 @@ elif selection == "Algorithms":
 
     # Input features
     st.subheader("Enter Features")
-    features = [st.number_input(f"Feature {i}", min_value=1, max_value=10000, step=0.01) for i in range(1, 12)]
+    features = [st.number_input(f"Feature {i}", min_value=1.0, max_value=10000.0, step=0.01) for i in range(1, 12)]
 
     if st.button("Predict"):
         if model:
