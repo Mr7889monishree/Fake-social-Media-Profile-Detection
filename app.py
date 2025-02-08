@@ -8,11 +8,19 @@ def load_model(model_path):
     if not os.path.exists(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
-    return joblib.load(model_path)
+    try:
+        return joblib.load(model_path)
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 def predict(model, features):
     """Make predictions using the loaded model."""
-    return model.predict([features])[0]
+    try:
+        return model.predict([features])[0]
+    except Exception as e:
+        st.error(f"Prediction error: {e}")
+        return None
 
 # App Layout
 st.set_page_config(page_title="Fake Social Media Profile Detection", page_icon=":guardsman:", layout="wide")
@@ -31,67 +39,25 @@ elif selection == "Algorithms":
     algo_menu = ["SVM", "Logistic Regression", "KNN", "Decision Tree", "Neural Network"]
     algo_choice = st.sidebar.selectbox("Choose Algorithm:", algo_menu)
 
-    # SVM Algorithm
-    if algo_choice == "SVM":
-        st.header("Support Vector Machine (SVM)")
-        model = load_model("models/svm_model.pkl")
-        
-        # Input features
-        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
+    # Dynamic Input for Algorithms
+    st.header(algo_choice)
 
-        if st.button("Predict"):
-            if model:
-                result = predict(model, features)
-                st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+    model_paths = {
+        "SVM": "models/svm_model.pkl",
+        "Logistic Regression": "models/logistic_model.pkl",
+        "KNN": "models/knn_model.pkl",
+        "Decision Tree": "models/decision_tree_model.pkl",
+        "Neural Network": "models/neural_network_model.pkl"
+    }
 
-    # Logistic Regression Algorithm
-    elif algo_choice == "Logistic Regression":
-        st.header("Logistic Regression")
-        model = load_model("models/log_reg_model.pkl")
-        
-        # Input features
-        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
+    model = load_model(model_paths.get(algo_choice))
 
-        if st.button("Predict"):
-            if model:
-                result = predict(model, features)
-                st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+    # Input features
+    st.subheader("Enter Features")
+    features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
-    # KNN Algorithm
-    elif algo_choice == "KNN":
-        st.header("K-Nearest Neighbors (KNN)")
-        model = load_model("models/knn_model.pkl")
-        
-        # Input features
-        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
-
-        if st.button("Predict"):
-            if model:
-                result = predict(model, features)
-                st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
-
-    # Decision Tree Algorithm
-    elif algo_choice == "Decision Tree":
-        st.header("Decision Tree")
-        model = load_model("models/decision_tree_model.pkl")
-        
-        # Input features
-        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
-
-        if st.button("Predict"):
-            if model:
-                result = predict(model, features)
-                st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
-
-    # Neural Network Algorithm
-    elif algo_choice == "Neural Network":
-        st.header("Neural Network")
-        model = load_model("models/neural_model.pkl")
-        
-        # Input features
-        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
-
-        if st.button("Predict"):
-            if model:
-                result = predict(model, features)
+    if st.button("Predict"):
+        if model:
+            result = predict(model, features)
+            if result is not None:
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
