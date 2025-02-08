@@ -1,61 +1,98 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import SVC
-
-# Load the pre-trained SVM model (make sure to replace this with your own saved model if required)
 import joblib
+import numpy as np
 
-# Assuming you've already trained the model, you can save it as 'svm_model.pkl'
-# If you don't have a trained model, use the code to train one and save it using joblib:
-# model = SVC()
-# model.fit(X_train, y_train)
-# joblib.dump(model, 'svm_model.pkl')
+def load_model(model_path):
+    """Load a pre-trained model from a given path."""
+    return joblib.load(model_path)
 
-# Load the model
-svm_model = joblib.load('model/svm_model.pkl')
+def predict(model, features):
+    """Make predictions using the loaded model."""
+    return model.predict([features])[0]
 
-# Title of the web app
-st.title('Fake Profile Detection')
+# App Layout
+st.set_page_config(page_title="Fake Social Media Profile Detection", page_icon=":guardsman:", layout="wide")
 
-# Function to take input from the user
-def get_input():
-    input_data = {}
-    
-    input_data['feature_1'] = st.number_input('Feature 1', min_value=0, max_value=1000, value=50)
-    input_data['feature_2'] = st.number_input('Feature 2', min_value=0, max_value=1000, value=50)
-    input_data['feature_3'] = st.number_input('Feature 3', min_value=0, max_value=1000, value=50)
-    input_data['feature_4'] = st.number_input('Feature 4', min_value=0, max_value=1000, value=50)
-    input_data['feature_5'] = st.number_input('Feature 5', min_value=0, max_value=1000, value=50)
-    input_data['feature_6'] = st.number_input('Feature 6', min_value=0, max_value=1000, value=50)
-    input_data['feature_7'] = st.number_input('Feature 7', min_value=0, max_value=1000, value=50)
-    input_data['feature_8'] = st.number_input('Feature 8', min_value=0, max_value=1000, value=50)
-    input_data['feature_9'] = st.number_input('Feature 9', min_value=0, max_value=1000, value=50)
-    input_data['feature_10'] = st.number_input('Feature 10', min_value=0, max_value=100000000, value=50)
-    input_data['feature_11'] = st.number_input('Feature 11', min_value=0, max_value=100000, value=50)
+# Sidebar Navbar
+st.sidebar.title("Navigation")
+menu = ["Home", "Algorithms"]
+selection = st.sidebar.radio("Go to:", menu)
 
-    
-    return input_data
+if selection == "Home":
+    st.title("Fake Social Media Profile Detection")
+    st.image("https://via.placeholder.com/800x400.png?text=Social+Media+Detection", caption="Identify fake profiles with advanced algorithms.")
+    st.write("This application helps detect fake social media profiles using machine learning algorithms. Choose an algorithm from the sidebar to start.")
 
-# Predict function to use the model for prediction
-def predict(input_data):
-    # Prepare the data for prediction (standardize the data)
-    input_array = np.array(list(input_data.values())).reshape(1, -1)
-    scaler = StandardScaler()
-    standardized_input = scaler.fit_transform(input_array)
-    
-    prediction = svm_model.predict(standardized_input)
-    
-    if prediction[0] == 0:
-        return 'True Profile'
-    else:
-        return 'Fake Profile'
+elif selection == "Algorithms":
+    algo_menu = ["SVM", "Logistic Regression", "KNN", "Decision Tree", "Neural Network"]
+    algo_choice = st.sidebar.selectbox("Choose Algorithm:", algo_menu)
 
-# UI for taking input
-input_data = get_input()
+    # SVM Algorithm
+    if algo_choice == "SVM":
+        st.header("Support Vector Machine (SVM)")
+        model = load_model("svm_model.pkl")
+        
+        # Input features
+        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        # Add more features as needed
 
-# Prediction button
-if st.button('Predict'):
-    result = predict(input_data)
-    st.write(f'The given profile is a {result}.')
+        if st.button("Predict"):
+            result = predict(model, [feature1, feature2])
+            st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+
+    # Logistic Regression Algorithm
+    elif algo_choice == "Logistic Regression":
+        st.header("Logistic Regression")
+        model = load_model("logistic_model.pkl")
+        
+        # Input features
+        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        # Add more features as needed
+
+        if st.button("Predict"):
+            result = predict(model, [feature1, feature2])
+            st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+
+    # KNN Algorithm
+    elif algo_choice == "KNN":
+        st.header("K-Nearest Neighbors (KNN)")
+        model = load_model("knn_model.pkl")
+        
+        # Input features
+        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        # Add more features as needed
+
+        if st.button("Predict"):
+            result = predict(model, [feature1, feature2])
+            st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+
+    # Decision Tree Algorithm
+    elif algo_choice == "Decision Tree":
+        st.header("Decision Tree")
+        model = load_model("decision_tree_model.pkl")
+        
+        # Input features
+        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        # Add more features as needed
+
+        if st.button("Predict"):
+            result = predict(model, [feature1, feature2])
+            st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
+
+    # Neural Network Algorithm
+    elif algo_choice == "Neural Network":
+        st.header("Neural Network")
+        model = load_model("neural_network_model.pkl")
+        
+        # Input features
+        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
+        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
+        # Add more features as needed
+
+        if st.button("Predict"):
+            result = predict(model, [feature1, feature2])
+            st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
