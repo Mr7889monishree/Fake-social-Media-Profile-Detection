@@ -44,7 +44,7 @@ elif selection == "Algorithms":
 
     model_paths = {
         "SVM": "models/svm_model.pkl",
-        "Logistic Regression": "models/logistic_model.pkl",
+        "Logistic Regression": "models/log_reg_model.pkl",
         "KNN": "models/knn_model.pkl",
         "Decision Tree": "models/decision_tree_model.pkl",
         "Neural Network": "models/neural_network_model.pkl"
