@@ -37,46 +37,24 @@ elif selection == "Algorithms":
         model = load_model("models/svm_model.pkl")
         
         # Input features
-        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        # Add more features as needed
+        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
         if st.button("Predict"):
             if model:
-                result = predict(model, [feature1, feature2])
+                result = predict(model, features)
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
 
     # Logistic Regression Algorithm
     elif algo_choice == "Logistic Regression":
         st.header("Logistic Regression")
-        model = load_model("models/log_reg__model.pkl")
+        model = load_model("models/log_reg_model.pkl")
         
         # Input features
-        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        # Add more features as needed
+        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
         if st.button("Predict"):
             if model:
-                result = predict(model, [feature1, feature2])
+                result = predict(model, features)
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
 
     # KNN Algorithm
@@ -85,22 +63,11 @@ elif selection == "Algorithms":
         model = load_model("models/knn_model.pkl")
         
         # Input features
-        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        # Add more features as needed
+        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
         if st.button("Predict"):
             if model:
-                result = predict(model, [feature1, feature2])
+                result = predict(model, features)
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
 
     # Decision Tree Algorithm
@@ -109,22 +76,11 @@ elif selection == "Algorithms":
         model = load_model("models/decision_tree_model.pkl")
         
         # Input features
-        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        # Add more features as needed
+        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
         if st.button("Predict"):
             if model:
-                result = predict(model, [feature1, feature2])
+                result = predict(model, features)
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
 
     # Neural Network Algorithm
@@ -133,20 +89,9 @@ elif selection == "Algorithms":
         model = load_model("models/neural_network_model.pkl")
         
         # Input features
-        feature1 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature2 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature3 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature4 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature5 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature6 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature7 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature8 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature9 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        feature10 = st.number_input("Feature 2", min_value=0.0, max_value=1.0, step=0.01)
-        feature11 = st.number_input("Feature 1", min_value=0.0, max_value=1.0, step=0.01)
-        # Add more features as needed
+        features = [st.number_input(f"Feature {i}", min_value=0.0, max_value=1.0, step=0.01) for i in range(1, 12)]
 
         if st.button("Predict"):
             if model:
-                result = predict(model, [feature1, feature2])
+                result = predict(model, features)
                 st.success("Prediction: Fake Profile" if result == 1 else "Prediction: Real Profile")
