@@ -9,13 +9,7 @@ def load_model(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
     try:
-        # If it's a Keras model, use tf.keras.models.load_model
-        if model_path.endswith(".h5"):
-            return tf.keras.models.load_model(model_path)
         return joblib.load(model_path)
-    except ImportError as e:
-        st.error(f"Required library not found: {e}. Ensure TensorFlow/Keras is installed.")
-        return None
     except Exception as e:
         st.error(f"Error loading model: {e}")
         return None
@@ -23,10 +17,7 @@ def load_model(model_path):
 def predict(model, features):
     """Make predictions using the loaded model."""
     try:
-        features = np.array(features).reshape(1, -1)  # Ensure features are in the right format
-        if isinstance(model, tf.keras.Model):
-            return model.predict(features).argmax(axis=1)[0]  # Neural network output
-        return model.predict(features)[0]  # Traditional ML models
+        return model.predict([features])[0]
     except Exception as e:
         st.error(f"Prediction error: {e}")
         return None
@@ -56,7 +47,7 @@ elif selection == "Algorithms":
         "Logistic Regression": "models/log_reg_model.pkl",
         "KNN": "models/knn_model.pkl",
         "Decision Tree": "models/decision_tree_model.pkl",
-        "Neural Network": "models/neural_network_model.pkl"  # Update with .h5 if using a Keras model
+        "Neural Network": "models/neural_network_model.pkl"
     }
 
     model = load_model(model_paths.get(algo_choice))
